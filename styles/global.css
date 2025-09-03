@@ -40,7 +40,7 @@ a.text-link {
     cursor: pointer;
 }
 
-a.text-link:hover {
+a.text-link:hover, a.text-link:focus {
     font-weight: 500;
 }
 
