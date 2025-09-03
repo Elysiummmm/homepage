@@ -4,32 +4,59 @@ precision highp float;
 attribute vec2 a_position;
 
 uniform vec2 u_scalingFactor;
+uniform float u_seconds;
 
 varying vec2 pos;
 
 void main() {
-    pos = a_position + 1.0;
+    pos = a_position;
     gl_Position = vec4(a_position * u_scalingFactor, 0.0, 1.0);
 }
 `;
 
+// thanks https://www.shadertoy.com/view/wtdSzX for the maths
 const fragment = `
 precision highp float;
 
-uniform float u_noiseShift;
+uniform float u_seconds;
+uniform float u_hexagonSize;
+uniform float u_darkenCoeff;
 
 varying vec2 pos;
 
-float rand(vec2 co) {
-    return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+const vec2 side = vec2(1.0, 1.7320508);
+
+float hex(in vec2 point) {
+    point = abs(point);
+    return max(dot(point, side * 0.5), point.x);
+}
+
+vec4 getHex(vec2 point) {
+    vec4 hexagonCenters = floor(vec4(point, point - vec2(0.5, 1)) / side.xyxy) + 0.5;
+    vec4 hexes = vec4(point - hexagonCenters.xy * side, point - (hexagonCenters.zw + 0.5) * side);
+
+    return dot(hexes.xy, hexes.xy) < dot(hexes.zw, hexes.zw)
+        ? vec4(hexes.xy, hexagonCenters.xy)
+        : vec4(hexes.zw, hexagonCenters.zw + 0.5);
 }
 
 void main() {
-    gl_FragColor = vec4(vec3(rand(pos * u_noiseShift)), 1);
+    vec4 currentHex = getHex(pos * u_hexagonSize + side.yx * u_seconds / 4.0);
+    float edgeDistance = hex(currentHex.yx);
+
+    vec3 col = mix(vec3(0.7), vec3(1.4), mix(0.3, 1.2, edgeDistance));
+    col *= vec3(pos.x,
+                pos.y,
+                0) + 0.4;
+
+    col *= u_darkenCoeff;
+
+    gl_FragColor = vec4(col, 1.0);
 }
 `;
 
-const FPS = 30;
+const FPS = 60;
+const hexagonSize = 6;
 
 let canvas = document.getElementById('background');
 let gl = canvas.getContext('webgl');
@@ -45,6 +72,12 @@ let aspectRatio;
 let currentScale;
 
 let u_scalingFactor;
+let u_seconds;
+let u_hexagonSize;
+let u_darkenCoeff;
+
+let startTime;
+let darkenCoeff;
 
 if (!gl) {
     // do something idk
@@ -60,14 +93,19 @@ if (!gl) {
 
     vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertexArray, gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, vertexArray, gl.DYNAMIC_DRAW);
 
     vertexCount = vertexArray.length / vertexNumComponents;
+
+    startTime = Date.now() / 1000;
+    darkenCoeff = 1.0;
 
     setInterval(renderLoop, 1000 / FPS);
 }
 
 function renderLoop() {
+    let timeRunning = Date.now() / 1000 - startTime;
+
     resizeCanvasToDisplaySize(gl.canvas);
 
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
@@ -78,10 +116,14 @@ function renderLoop() {
     gl.useProgram(bgProgram);
 
     u_scalingFactor = gl.getUniformLocation(bgProgram, "u_scalingFactor");
-    u_noiseShift = gl.getUniformLocation(bgProgram, "u_noiseShift");
+    u_seconds = gl.getUniformLocation(bgProgram, "u_seconds");
+    u_hexagonSize = gl.getUniformLocation(bgProgram, "u_hexagonSize");
+    u_darkenCoeff = gl.getUniformLocation(bgProgram, "u_darkenCoeff");
 
     gl.uniform2fv(u_scalingFactor, currentScale);
-    gl.uniform1f(u_noiseShift, Math.sin(Date.now()));
+    gl.uniform1f(u_seconds, timeRunning);
+    gl.uniform1f(u_hexagonSize, hexagonSize);
+    gl.uniform1f(u_darkenCoeff, darkenCoeff);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 
