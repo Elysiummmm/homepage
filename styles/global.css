@@ -20,7 +20,7 @@ html, body {
 
     font-family: 'Montserrat';
     font-size: 40px;
-    font-weight: 200;
+    font-weight: 300;
 
     color: white;
 }
@@ -43,9 +43,12 @@ a.text-link {
     text-decoration: none;
     color: white;
     cursor: pointer;
+
+    font-size: 40px;
+    font-weight: 200;
 }
 
-a.text-link:hover, a.text-link:focus {
+a.text-link:hover, a.text-link:focus, a.text-link.selected {
     font-weight: 500;
 }
 

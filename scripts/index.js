@@ -12,9 +12,9 @@ function switchScreen(screen) {
     if (screen != mainScreen) {
         mainScreen.classList.add("fade-up");
         screen.classList.remove("fade-down");
-    } else {
+    } else if (currentScreen != mainScreen) {
         mainScreen.classList.remove("fade-up");
-        screen.classList.add("fade-down");
+        currentScreen.classList.add("fade-down");
     }
 
     currentScreen = screen;
@@ -29,3 +29,12 @@ document.getElementById('toggle-bg-button').addEventListener('click', (event) =>
 
 document.getElementById('about-link').addEventListener('click', (event) => { switchScreen(aboutScreen) });
 document.getElementById('projects-link').addEventListener('click', (event) => { switchScreen(projectsScreen) });
+
+let backLinks = document.getElementsByClassName('back-link');
+Array.from(backLinks).forEach(element => {
+    element.addEventListener('click', (event) => { switchScreen(mainScreen) });
+});
+
+window.addEventListener('keydown', (event) => {
+    if (event.code === "Escape") switchScreen(mainScreen);
+});

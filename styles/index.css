@@ -34,6 +34,33 @@ main#content-wrapper {
     background: rgba(0, 0 , 0, 0.6);
 }
 
+div#project-selector {
+    display: flex;
+
+    width: 100%;
+    mask-image: linear-gradient(90deg, transparent 15%, black 50%, transparent 85%);
+    justify-content: center;
+}
+
+div#project-selector-contents {
+    white-space: nowrap;
+    transition: all 0.25s;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    gap: 50px;
+}
+
+div#project-contents {
+    min-height: 55%;
+    overflow-y: auto;
+
+    background-color: aqua;
+}
+
 .invisible {
     opacity: 0%;
     user-select: none;
@@ -45,10 +72,11 @@ main#content-wrapper {
     flex-direction: row;
 
     justify-content: center;
+    align-items: center;
 }
 
 .mainpage-animations {
-    transition: all 0.5s;
+    transition: all 0.6s;
 }
 
 .fade-down, .fade-up {
@@ -58,11 +86,11 @@ main#content-wrapper {
 }
 
 .fade-up {
-    translate: 0 -150px;
+    translate: 0 -250px;
 }
 
 .fade-down {
-    translate: 0 150px;
+    translate: 0 250px;
 }
 
 .subpage {
@@ -78,4 +106,6 @@ main#content-wrapper {
     align-items: center;
 
     gap: 36px;
+
+    font-size: 32px;
 }
