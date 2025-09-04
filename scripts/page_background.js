@@ -185,4 +185,4 @@ function resizeCanvasToDisplaySize(canvas) {
     currentScale = [1.0, aspectRatio];
  
     return needResize;
-}
+}   

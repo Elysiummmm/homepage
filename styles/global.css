@@ -30,6 +30,11 @@ h1 {
     font-size: 90px;
 }
 
+h2 {
+    font-weight: 700;
+    font-size: 68px;
+}
+
 a {
     transition: all 0.2s;
 }
