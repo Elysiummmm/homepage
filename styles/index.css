@@ -58,7 +58,34 @@ div#project-contents {
     min-height: 55%;
     overflow-y: auto;
 
-    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+}
+
+div#project-content-right {
+    display: flex;
+    flex-grow: 2;
+
+    flex-direction: column;
+}
+
+div#project-text {
+    text-align: center;
+    font-size: 26px;
+}
+
+div#project-images {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+div#project-links {
+    align-self: flex-end;
+}
+
+div#project-text .text-link {
+    font-size: 26px;
 }
 
 .invisible {
@@ -106,6 +133,4 @@ div#project-contents {
     align-items: center;
 
     gap: 36px;
-
-    font-size: 32px;
 }
