@@ -3,12 +3,15 @@ const projects = {
         name: "WISS Casino",
         content: `
         Casino Simulator created by me and a friend
-        (<a class="text-link" href="https://github.com/m4rv1n33" target="_blank"> <i class="bi bi-github"></i> @m4rv1n33 </a>)
+        (<a class="text-link" href="https://github.com/m4rv1n33" target="_blank"> <i class="bi bi-github"></i> m4rv1n33 </a>)
 
         `,
-        images: [ "https://media.discordapp.net/attachments/986005577316573286/1411778980956082206/image.png" ]
-    },
+        images: [ "https://placehold.co/250x140.png" ],
+        links: [ { icon: "bi-github", href: "https://github.com/elysiummmm/wiss-casino", alt: "GitHub" } ]
+    }
 };
+
+const smallImageSize = [ 250, 140 ];
 
 var selectorEntryCenters = {};
 
@@ -17,7 +20,14 @@ const projectContents = document.getElementById('project-text');
 const projectImages = document.getElementById('project-images');
 const projectLinks = document.getElementById('project-links');
 const projectSelector = document.getElementById('project-selector-contents');
-const projectGap = parseInt(window.getComputedStyle(projectSelector).gap.slice(0, -2));
+const fullscreenImage = document.getElementById('project-image-fullscreen');
+const fullscreenImageWrapper = document.getElementById('project-image-fullscreen-wrapper');
+const projectGap = parseInt(window.getComputedStyle(projectSelector).gap.slice(0, -2)); // evil code (slice to remove "px" off the end)
+
+function openFullscreenImage(image) {
+    fullscreenImage.setAttribute('src', image);
+    fullscreenImageWrapper.classList.remove('invisible');
+}
 
 function selectProject(projectID) {
     let project = projects[projectID];
@@ -25,12 +35,36 @@ function selectProject(projectID) {
     projectSelector.style.translate = selectorEntryCenters[projectID] + "px";
 
     projectContents.innerHTML = project.content;
+    projectImages.innerHTML = "";
+    projectLinks.innerHTML = "";
 
     project.images.forEach(image => {
         let img = document.createElement('img');
-        img.setAttribute('source', image);
+        img.setAttribute('src', image);
+        img.setAttribute('width', smallImageSize[0]);
+        img.setAttribute('height', smallImageSize[1]);
+        img.classList.add('project-image-small');
+
+        img.addEventListener('click', (event) => {
+            openFullscreenImage(image);
+        });
 
         projectImages.appendChild(img);
+    });
+
+    project.links.forEach(link => {
+        let linkElement = document.createElement('a');
+        let icon = document.createElement('i');
+
+        linkElement.setAttribute('target', "_blank");
+        linkElement.setAttribute('href', link.href);
+        linkElement.setAttribute('title', link.alt);
+        linkElement.classList.add('icon-link');
+
+        icon.className = `bi ${link.icon}`;
+
+        linkElement.appendChild(icon);
+        projectLinks.appendChild(linkElement);
     });
 }
 
@@ -45,6 +79,10 @@ function computeSelectorEntryCenters() {
         currentWidth += entry.getBoundingClientRect().width + projectGap;
     });
 }
+
+document.getElementById('project-image-close').addEventListener('click', (event) => {
+    fullscreenImageWrapper.classList.add('invisible');
+});
 
 var selectedProject;
 
