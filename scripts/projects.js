@@ -1,4 +1,13 @@
 const projects = {
+    'rafflike': {
+        name: "Rafflike",
+        content: ``,
+        images: [ ],
+        links: [
+            { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
+            { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike.zip", alt: "Download" },
+        ]
+    },
     'wiss-casino': {
         name: "WISS Casino",
         content: `
@@ -15,7 +24,7 @@ const smallImageSize = [ 250, 140 ];
 
 var selectorEntryCenters = {};
 
-const defaultProject = 'wiss-casino';
+const defaultProject = 'rafflike';
 const projectContents = document.getElementById('project-text');
 const projectImages = document.getElementById('project-images');
 const projectLinks = document.getElementById('project-links');
