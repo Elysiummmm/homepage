@@ -1,11 +1,11 @@
 const projects = {
     'rafflike': {
         name: "Rafflike",
-        content: ``,
-        images: [ ],
+        content: `Roguelike with combat inspired by turn-based RPGs.`,
+        images: [ "./assets/rafflike/title.png", "./assets/rafflike/team.png", "./assets/rafflike/collection.png", "./assets/rafflike/boss.png", "./assets/rafflike/detailed.png" ],
         links: [
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
-            { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike.zip", alt: "Download" },
+            { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike/rafflike.zip", alt: "Download" },
         ]
     },
     'wiss-casino': {
