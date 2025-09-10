@@ -14,6 +14,14 @@ const projects = {
             { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike/rafflike.zip", alt: "Download" },
         ]
     },
+    'hikari': {
+        name: "HIKARI",
+        content: `
+        Bullet hell game.
+        `,
+        images: [ ],
+        links: [ ]
+    },
     'wiss-casino': {
         name: "WISS Casino",
         content: `
