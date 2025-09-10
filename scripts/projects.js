@@ -1,7 +1,13 @@
 const projects = {
     'rafflike': {
         name: "Rafflike",
-        content: `Roguelike with combat inspired by turn-based RPGs.`,
+        content: `
+        Roguelike with combat inspired by turn-based RPGs. The game was created as part of an inside joke in
+        my friend group, so there's a lot of jokes and other things that probably won't make much sense to most
+        people. I worked on it for about 6 months before abandoning it because I felt I was going too far for an
+        inside joke (though I would like to revisit the gameplay sometime, it's very enjoyable).
+        The game is playable with a decent chunk of content, but there's things missing and some
+        imbalances here and there.`,
         images: [ "./assets/rafflike/title.png", "./assets/rafflike/team.png", "./assets/rafflike/collection.png", "./assets/rafflike/boss.png", "./assets/rafflike/detailed.png" ],
         links: [
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },

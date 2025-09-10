@@ -58,17 +58,23 @@ div#project-contents {
     min-height: 55%;
     max-height: 55%;
 
+    min-width: 60%;
+    max-width: 60%;
+
     display: flex;
     flex-direction: row;
+
+    justify-content: center;
 
     gap: 25px;
 }
 
 div#project-content-right {
     display: flex;
-    flex-grow: 2;
-
     flex-direction: column;
+
+    min-width: 70%;
+    max-width: 70%;
 }
 
 div#project-text {
@@ -76,6 +82,7 @@ div#project-text {
     font-size: 26px;
 
     overflow-y: auto;
+
     flex-grow: 1;
 }
 
@@ -85,12 +92,11 @@ div#project-links {
     width: 100%;
     flex-grow: 0;
 
-    justify-content: center;
+    justify-content: right;
 }
 
 div#project-images {
     display: flex;
-    flex-grow: 1;
     flex-direction: column;
 
     gap: 20px;
