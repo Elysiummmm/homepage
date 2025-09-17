@@ -129,6 +129,17 @@ div#project-text, div#project-images {
     scrollbar-color: white transparent;
 }
 
+div#about-text {
+    text-align: center;
+    text-wrap: wrap;
+
+    max-width: 60%;
+}
+
+div#about-text .text-link {
+    font-size: 32px;
+}
+
 div#project-text .text-link {
     font-size: 26px;
 }
