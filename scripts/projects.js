@@ -13,7 +13,18 @@ const projects = {
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
             { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike/rafflike.zip", alt: "Download" },
         ]
-    }
+    },
+    'yt-dlp-wrapper': {
+        name: "yt-dlp Wrapper",
+        content: `
+        Super simple GUI for yt-dlp. Mostly made as a coding exercise - I was disappointed that there weren't
+        any dead easy paste-and-go yt-dlp GUI clients, so I decided to make my own.
+        `,
+        images: [ "./assets/yt-dlp-wrapper.png" ],
+        links: [
+            { icon: "bi-github", href: "https://github.com/Elysiummmm/ely-yt-dlp-wrapper", alt: "GitHub" },
+        ]
+    },
 };
 
 const smallImageSize = [ 250, 140 ];
