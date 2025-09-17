@@ -26,9 +26,11 @@ function checkWindowAspectRatio() {
     let ratio = window.innerWidth / window.innerHeight;
     
     if (ratio < 1) {
+        document.getElementById('toggle-bg-button').classList.add('invisible');
         contentWrapper.classList.add('invisible');
         orientationWarning.classList.remove('invisible');
     } else {
+        document.getElementById('toggle-bg-button').classList.remove('invisible');
         contentWrapper.classList.remove('invisible');
         orientationWarning.classList.add('invisible');
     }

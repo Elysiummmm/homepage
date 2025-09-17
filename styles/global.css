@@ -10,8 +10,15 @@
     gap: 20px;
 }
 
+@media (height < 675px) {
+    html, body { overflow: auto; }
+}
+
+@media (height >= 675px) {
+    html, body { overflow: hidden; }
+}
+
 html, body {
-    overflow: hidden;
     padding: 0;
     margin: 0;
 
@@ -23,6 +30,8 @@ html, body {
     font-weight: 300;
 
     color: white;
+
+    scrollbar-color: white transparent;
 }
 
 h1 {

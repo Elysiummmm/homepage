@@ -125,15 +125,13 @@ div#project-image-fullscreen-wrapper {
     background: rgba(0, 0 , 0, 0.75);
 }
 
-div#project-text, div#project-images {
-    scrollbar-color: white transparent;
-}
-
 div#about-text {
     text-align: center;
     text-wrap: wrap;
 
     max-width: 60%;
+
+    overflow-y: auto;
 }
 
 div#about-text .text-link {
