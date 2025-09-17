@@ -13,16 +13,6 @@ const projects = {
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
             { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike/rafflike.zip", alt: "Download" },
         ]
-    },
-    'wiss-casino': {
-        name: "WISS Casino",
-        content: `
-        Casino Simulator created by me and a friend
-        (<a class="text-link" href="https://github.com/m4rv1n33" target="_blank"> <i class="bi bi-github"></i> m4rv1n33 </a>)
-
-        `,
-        images: [ "https://placehold.co/250x140.png" ],
-        links: [ { icon: "bi-github", href: "https://github.com/elysiummmm/wiss-casino", alt: "GitHub" } ]
     }
 };
 
