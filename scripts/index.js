@@ -6,6 +6,8 @@ const mainScreen = document.getElementById('home');
 const aboutScreen = document.getElementById('about');
 const projectsScreen = document.getElementById('projects');
 
+const orientationWarning = document.getElementById('orientation-warning');
+
 var currentScreen = mainScreen;
 
 function switchScreen(screen) {
@@ -18,6 +20,18 @@ function switchScreen(screen) {
     }
 
     currentScreen = screen;
+}
+
+function checkWindowAspectRatio() {
+    let ratio = window.innerWidth / window.innerHeight;
+    
+    if (ratio < 1) {
+        contentWrapper.classList.add('invisible');
+        orientationWarning.classList.remove('invisible');
+    } else {
+        contentWrapper.classList.remove('invisible');
+        orientationWarning.classList.add('invisible');
+    }
 }
 
 document.getElementById('toggle-bg-button').addEventListener('click', (event) => {
@@ -38,3 +52,6 @@ Array.from(backLinks).forEach(element => {
 window.addEventListener('keydown', (event) => {
     if (event.code === "Escape") switchScreen(mainScreen);
 });
+
+window.addEventListener('resize', checkWindowAspectRatio);
+checkWindowAspectRatio();
