@@ -11,7 +11,6 @@ const projects = {
         images: [ "./assets/rafflike/title.png", "./assets/rafflike/team.png", "./assets/rafflike/collection.png", "./assets/rafflike/boss.png", "./assets/rafflike/detailed.png" ],
         links: [
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
-            { icon: "bi-file-earmark-zip-fill", href: "./assets/rafflike/rafflike.zip", alt: "Download" },
         ]
     },
     'yt-dlp-wrapper': {
