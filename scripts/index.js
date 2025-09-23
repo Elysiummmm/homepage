@@ -1,6 +1,7 @@
 let bgCovered = true;
 
 const contentWrapper = document.getElementById('content-wrapper');
+const backgroundCover = document.getElementById('background-cover');
 
 const mainScreen = document.getElementById('home');
 const aboutScreen = document.getElementById('about');
@@ -37,8 +38,13 @@ function checkWindowAspectRatio() {
 }
 
 document.getElementById('toggle-bg-button').addEventListener('click', (event) => {
-    if (bgCovered) contentWrapper.classList.add('invisible');
-    else contentWrapper.classList.remove('invisible');
+    if (bgCovered) {
+        backgroundCover.classList.add('invisible');
+        contentWrapper.classList.add('invisible');
+    } else {
+        backgroundCover.classList.remove('invisible');
+        contentWrapper.classList.remove('invisible');
+    }
 
     bgCovered = !bgCovered;
 });
