@@ -11,7 +11,19 @@
 }
 
 @media (height < 675px) {
-    html, body { overflow: auto; }
+    html, body {
+        overflow: hidden;
+        
+    }
+
+    main {
+        overflow: hidden;
+        zoom: 50%;
+    }
+
+    h2 {
+        font-size: 70px;
+    }
 }
 
 @media (height >= 675px) {
