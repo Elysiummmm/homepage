@@ -13,6 +13,18 @@ const projects = {
             { icon: "bi-github", href: "https://github.com/Elysiummmm/rafflike", alt: "GitHub" },
         ]
     },
+    'rpg-bot': {
+        name: "RPG Bot",
+        content: `
+        An incremental RPG minigame for discord. It's currently unfinished, though the source code is public already.
+        I work on it as a side project when I don't have anything else to do, so it might be a while until it's somewhat
+        finished. Once I consider it finished, I'll provide an install link here.
+        `,
+        images: [ ],
+        links: [
+            { icon: "bi-github", href: "https://github.com/Elysiummmm/rpg-bot", alt: "GitHub" },
+        ]
+    },
     'yt-dlp-wrapper': {
         name: "yt-dlp Wrapper",
         content: `
